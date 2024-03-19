@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, unnecessary_string_interpolations
 import 'package:flutter/material.dart';
 import 'package:test_1/Pages/login.dart';
+import 'package:test_1/Pages/notificationPage.dart';
 import 'package:test_1/Widgets/read.dart';
 
 // This is Navigation drawer page
@@ -73,7 +74,7 @@ class NavBar extends StatelessWidget {
             const Tile(
                 icons: Icon(Icons.notifications),
                 text: "Notification",
-                fun: Login()),
+                fun: NotificationScreen()),
           ]),
     );
   }

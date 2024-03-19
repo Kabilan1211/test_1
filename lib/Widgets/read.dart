@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, camel_case_types
 
 import 'package:test_1/dbSupport/mongo.dart';
 
@@ -52,7 +52,12 @@ Future<void> invalidUser(String email) async {
       //for debugging purpose
       print(valid);
     }
+    else{
+      valid = 1;
+      print(valid);
+
+    }
   } catch (e) {
-    // print("Error fetching data: $e");
+    print("Error fetching data: $e");
   }
 }

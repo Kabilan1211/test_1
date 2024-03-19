@@ -5,7 +5,7 @@ import 'package:mongo_dart/mongo_dart.dart' as M;
 import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/Widgets/auth.dart';
 import 'package:test_1/Pages/invalid.dart';
-import 'package:test_1/Pages/main.dart';
+import 'package:test_1/main.dart';
 import 'package:test_1/Widgets/read.dart';
 import 'package:test_1/Pages/updatePass.dart';
 import 'package:test_1/dbSupport/mongo.dart';
@@ -131,8 +131,9 @@ class _LoginState extends State<Login> {
                     });
 
                     //Calling the fetchData and invalidUser Function to read the user details
-                    fetchData(emailId);
+                    fetchData(_emailController.text);
                     invalidUser(emailId);
+                    // print(valid);
 
                     //Checking user is not in the blocked list
                     if (valid == 1) {
@@ -179,7 +180,7 @@ class _LoginState extends State<Login> {
                       }
                     } else {
                       print("Enter valid email and password");
-                      _clearall();
+                      // _clearall();
                     }
                   } else {
                     //Route the user to blocked users page

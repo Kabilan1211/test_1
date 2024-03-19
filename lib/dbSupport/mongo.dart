@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:mongo_dart/mongo_dart.dart';
 import 'package:test_1/dbSupport/constants.dart';
 import 'package:test_1/dbSupport/mongoDBModel.dart';
+import 'package:test_1/dbSupport/notificationModel.dart';
 import 'package:test_1/dbSupport/validUser.dart';
 
 //This file contains all the function used to perform CRUD operation from the database
@@ -51,5 +52,14 @@ class MongoDatabase {
   static Future<void> insertData(MongoDbModel data) async {
     await userCollection.insertOne(data.toJson());
   }
+
+  static Future<List<Map<String, Object?>>> notification() async{
+    final data = await notificationCollection.find().toList();
+    return data;
+  }
   
+  static Future<void>insertnotification( NotificationModel data) async{
+    await notificationCollection.insertOne(data.toJson());
+  }
+
 }

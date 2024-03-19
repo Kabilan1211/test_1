@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/Pages/login.dart';
-import 'package:test_1/Pages/main.dart';
+import 'package:test_1/main.dart';
 import 'package:test_1/Widgets/read.dart';
 
 //This is the reset password page
