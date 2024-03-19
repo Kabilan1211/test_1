@@ -10,7 +10,7 @@ import 'package:test_1/dbSupport/validUser.dart';
 //This file contains all the function used to perform CRUD operation from the database
 
 class MongoDatabase {
-  static var db, userCollection, invalidUser;
+  static var db, userCollection, invalidUser, notificationCollection ;
 
   //Function used to connect the database
   static connect() async {
@@ -19,6 +19,7 @@ class MongoDatabase {
     inspect(db);
     userCollection = db.collection(USER_CONNECTION);
     invalidUser = db.collection(validity);
+    notificationCollection = db.collection(Notification);
   }
 
   //Function used to update the Database 
@@ -50,4 +51,5 @@ class MongoDatabase {
   static Future<void> insertData(MongoDbModel data) async {
     await userCollection.insertOne(data.toJson());
   }
+  
 }
