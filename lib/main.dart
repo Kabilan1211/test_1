@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:test_1/Pages/notificationPage.dart';
-import 'package:test_1/Widgets/read.dart';
 import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/Pages/splash.dart';
