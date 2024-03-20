@@ -53,7 +53,7 @@ class MongoDatabase {
     await userCollection.insertOne(data.toJson());
   }
 
-  static Future<List<Map<String, Object?>>> notification() async{
+  static Future<List<Map<String, dynamic>>> notification() async{
     final data = await notificationCollection.find().toList();
     return data;
   }

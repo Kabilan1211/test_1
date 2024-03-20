@@ -11,19 +11,23 @@ String notificationModelToJson(NotificationModel data) => json.encode(data.toJso
 class NotificationModel {
     String title;
     String body;
+    int notificationNumber;
 
     NotificationModel({
         required this.title,
         required this.body,
+        required this.notificationNumber
     });
 
     factory NotificationModel.fromJson(Map<String, dynamic> json) => NotificationModel(
         title: json["Title"],
         body: json["Body"],
+        notificationNumber: json["Notification Number"],
     );
 
     Map<String, dynamic> toJson() => {
         "Title": title,
         "Body": body,
+        "Notification Number": notificationNumber,
     };
 }

@@ -11,6 +11,12 @@ String dataBaseEmail = "";
 String dataBasePassword = "";
 String firstName = "";
 String lastName = "";
+String lastTitle ="";
+String lastBody ="";
+String previousTitle = "";
+String previousBody = "";
+int currentNotificationNumber = 0;
+int previousNotificationNumber = 0;
 
 //fetch data from the user collection from the database
 
@@ -60,4 +66,23 @@ Future<void> invalidUser(String email) async {
   } catch (e) {
     print("Error fetching data: $e");
   }
+}
+
+Future<void> readNotification() async{
+  try{
+    final dataList = await MongoDatabase.notification();
+    if(dataList.isNotEmpty){
+      final Map<String, dynamic> data = dataList.last;
+      lastTitle = data['Title'] ?? "";
+      lastBody = data['Body'] ?? "";
+      currentNotificationNumber = data[''] ??0;
+      print(lastTitle);
+      print(lastBody);
+    }
+  }
+  catch(e){
+    print(e.toString());
+  }
+  // Future.delayed(const Duration(seconds: 2),readNotification);
+
 }

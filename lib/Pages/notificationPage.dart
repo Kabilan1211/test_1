@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/dbSupport/notificationModel.dart';
 
+int? length = 0;
+
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
@@ -31,6 +33,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   child: CircularProgressIndicator(),
                 );
               } else if (snapshot.hasData) {
+                length = snapshot.data?.length;
+                print(length);
                 return ListView.builder(
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {

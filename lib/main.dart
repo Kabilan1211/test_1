@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_1/Pages/notificationPage.dart';
+import 'package:test_1/Widgets/read.dart';
 import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/Pages/splash.dart';
@@ -11,9 +13,9 @@ import 'package:test_1/dbSupport/notificationModel.dart';
 
 void main() async {
   //Run the app after ensuring the widget is loaded
-
   WidgetsFlutterBinding.ensureInitialized();
   await MongoDatabase.connect();
+  // readNotification();
   runApp(const MyApp());
 }
 
@@ -56,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> insertNotification(String title, String body) async {
-    var data = NotificationModel(title: title, body: body);
+    var data = NotificationModel(title: title, body: body,notificationNumber: 1);
     await MongoDatabase.insertnotification(data);
   }
   @override
@@ -107,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   body = _bodyController.text;
                 });
                 insertNotification(title, body);
+                print(length);
               }, child: Text("Update"))
           ],
         ),
