@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_1/Pages/notificationPage.dart';
+import 'package:test_1/Widgets/read.dart';
 import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/Pages/splash.dart';
@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:test_1/Pages/login.dart';
 import 'package:test_1/Widgets/navbar.dart';
 import 'package:test_1/dbSupport/notificationModel.dart';
+import 'package:test_1/dbSupport/newNotification.dart';
 
 //This is the home page
 
@@ -14,7 +15,8 @@ void main() async {
   //Run the app after ensuring the widget is loaded
   WidgetsFlutterBinding.ensureInitialized();
   await MongoDatabase.connect();
-  // readNotification();
+  readNotification();
+  check();
   runApp(const MyApp());
 }
 
@@ -44,8 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _titleController = TextEditingController();
   final _bodyController = TextEditingController();
+  final _numController = TextEditingController();
   String title = "";
   String body = "";
+  String num = "";
 
   //Function to route the user to signout page
   Future<void> signOut() async {
@@ -56,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future<void> insertNotification(String title, String body) async {
-    var data = NotificationModel(title: title, body: body,notificationNumber: 1);
+  Future<void> insertNotification(String title, String body, int num) async {
+    var data = NotificationModel(title: title, body: body,notificationNumber: num);
     await MongoDatabase.insertnotification(data);
   }
   @override
@@ -73,13 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       backgroundColor: Colors.grey[200],
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Text("Welcome to our App"),
-            const Text("From now onwards you will notifications from us !"),
+            Text("Welcome to our App"),
+            Text("From now onwards you will notifications from us !"),
 
             // For debugging Purpose
             // ElevatedButton(onPressed: (){
@@ -87,29 +91,29 @@ class _MyHomePageState extends State<MyHomePage> {
             //   },
             //    child: const Text("Read"))
 
-            CustomTextField1(
-              controller: _titleController,
-              hintText: "Enter Title",
-              secureText: false,
-              validator: (val){
-              return null;
-            }
-            ),
-            CustomTextField1(
-              controller: _bodyController,
-              hintText: "Enter the content", 
-              secureText: false, 
-              validator: (val){
-                return null;
-              }),
-              ElevatedButton(onPressed: (){
-                setState(() {
-                  title = _titleController.text;
-                  body = _bodyController.text;
-                });
-                insertNotification(title, body);
-                print(length);
-              }, child: Text("Update"))
+            // CustomTextField1(
+            //   controller: _titleController,
+            //   hintText: "Enter Title",
+            //   secureText: false,
+            //   validator: (val){
+            //   return null;
+            // }
+            // ),
+            // CustomTextField1(
+            //   controller: _bodyController,
+            //   hintText: "Enter the content", 
+            //   secureText: false, 
+            //   validator: (val){
+            //     return null;
+            //   }),
+            //   ElevatedButton(onPressed: (){
+            //     setState(() {
+            //       title = _titleController.text;
+            //       body = _bodyController.text;
+            //     });
+            //     insertNotification(title, body, 7);
+            //     // print(length);
+            //   }, child: Text("Update"))
           ],
         ),
       ),

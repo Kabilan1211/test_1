@@ -15,7 +15,7 @@ String lastTitle ="";
 String lastBody ="";
 String previousTitle = "";
 String previousBody = "";
-int currentNotificationNumber = 0;
+int currentNotificationNumber = 1;
 int previousNotificationNumber = 0;
 
 //fetch data from the user collection from the database
@@ -75,9 +75,9 @@ Future<void> readNotification() async{
       final Map<String, dynamic> data = dataList.last;
       lastTitle = data['Title'] ?? "";
       lastBody = data['Body'] ?? "";
-      currentNotificationNumber = data[''] ??0;
-      print(lastTitle);
-      print(lastBody);
+      currentNotificationNumber = data['Notification Number'] ?? 0;
+      // print(lastTitle);
+      // print(lastBody);
     }
   }
   catch(e){

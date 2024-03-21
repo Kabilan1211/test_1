@@ -1,26 +1,23 @@
-// ignore_for_file: file_names, avoid_print
+// ignore_for_file: avoid_print, file_names
 
 import 'package:test_1/Widgets/read.dart';
 
-class Newnotification{
-
-bool newNotification(String previousTitle, String lastTitle, String previousBody, String lastBody){
-  if(previousTitle != lastTitle || previousBody != lastBody){
-    previousNotificationNumber = currentNotificationNumber;
-    previousTitle = lastTitle;
-    previousBody = lastBody;
-    return true;
-  }
-  else{
-    return false;
+class Newnotification {
+  bool newNotification(int num1, int num2) {
+    if (num1 != num2) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
-void check(){
-  if(newNotification(previousTitle, lastTitle, previousBody, lastBody)){
+void check() {
+  final newNotificationInstance = Newnotification();
+  if (newNotificationInstance.newNotification(previousNotificationNumber, currentNotificationNumber)) {
     print("New Notification Detected");
+    previousNotificationNumber = currentNotificationNumber;
   }
-}
- 
-
+  readNotification();
+  Future.delayed(const Duration(seconds: 2), check);
 }
