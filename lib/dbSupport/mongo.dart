@@ -53,11 +53,13 @@ class MongoDatabase {
     await userCollection.insertOne(data.toJson());
   }
 
+  //Function used to read data from the Notifications Collection
   static Future<List<Map<String, dynamic>>> notification() async{
     final data = await notificationCollection.find().toList();
     return data;
   }
   
+  //Function used to insert data into Notification Collection
   static Future<void>insertnotification( NotificationModel data) async{
     await notificationCollection.insertOne(data.toJson());
   }

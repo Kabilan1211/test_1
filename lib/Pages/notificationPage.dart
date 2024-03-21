@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/dbSupport/notificationModel.dart';
 
+// This is the notification page, used to display all the notifications
+
 int? length = 0;
 
 class NotificationScreen extends StatefulWidget {
@@ -26,7 +28,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: Container(
           padding: const EdgeInsets.all(10),
           child: FutureBuilder<List<Map<String, Object?>>>(
-            future: MongoDatabase.notification(), // Adjust this method according to your implementation
+            future: MongoDatabase.notification(), // Function used to read the data's in the Notification Collection
             builder: (context, AsyncSnapshot<List<Map<String, Object?>>> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
@@ -57,6 +59,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
+  //Widget used to display the output data's in a List Tile
   Widget buildNotificationCard(NotificationModel data) {
     return Card(
       elevation: 2,

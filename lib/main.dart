@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_1/Widgets/read.dart';
-import 'package:test_1/Widgets/textField.dart';
+// import 'package:test_1/Widgets/textField.dart';
 import 'package:test_1/dbSupport/mongo.dart';
 import 'package:test_1/Pages/splash.dart';
 import 'dart:async';
@@ -44,12 +44,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final _titleController = TextEditingController();
-  final _bodyController = TextEditingController();
-  final _numController = TextEditingController();
-  String title = "";
-  String body = "";
-  String num = "";
+  // For debugging purpose
+  // final _titleController = TextEditingController();
+  // final _bodyController = TextEditingController();
+  // final _numController = TextEditingController();
+  // String title = "";
+  // String body = "";
+  // String num = "";
 
   //Function to route the user to signout page
   Future<void> signOut() async {
@@ -90,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             //   fetchData(emailId);
             //   },
             //    child: const Text("Read"))
-
             // CustomTextField1(
             //   controller: _titleController,
             //   hintText: "Enter Title",

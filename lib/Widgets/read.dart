@@ -68,6 +68,7 @@ Future<void> invalidUser(String email) async {
   }
 }
 
+// Function to read the last data from the Notification Collection
 Future<void> readNotification() async{
   try{
     final dataList = await MongoDatabase.notification();
@@ -76,6 +77,7 @@ Future<void> readNotification() async{
       lastTitle = data['Title'] ?? "";
       lastBody = data['Body'] ?? "";
       currentNotificationNumber = data['Notification Number'] ?? 0;
+      // For debugging Purpose
       // print(lastTitle);
       // print(lastBody);
     }
@@ -83,6 +85,4 @@ Future<void> readNotification() async{
   catch(e){
     print(e.toString());
   }
-  // Future.delayed(const Duration(seconds: 2),readNotification);
-
 }

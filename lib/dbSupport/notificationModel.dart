@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+//It is the Notification format, that should be in the database
+
 NotificationModel notificationModelFromJson(String str) => NotificationModel.fromJson(json.decode(str));
 
 String notificationModelToJson(NotificationModel data) => json.encode(data.toJson());
